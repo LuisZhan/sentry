@@ -10,7 +10,7 @@ import emptyStateImg from '../../../images/spot/performance-empty-state.svg';
 
 function Onboarding() {
   return (
-    <StyledOnboardingPanel>
+    <StyledOnboardingPanel image={<StyledImage src={emptyStateImg} />}>
       <h3>{t('Pinpoint problems')}</h3>
       <p>
         {t(
@@ -38,11 +38,25 @@ function Onboarding() {
 }
 
 const StyledOnboardingPanel = styled(OnboardingPanel)`
-  background: url(${emptyStateImg}) no-repeat 25% center/75%;
+  background: url(${emptyStateImg}) no-repeat 25% center/800px;
+
+  @media (max-width: ${p => p.theme.breakpoints[0]}) {
+    background: none;
+  }
 `;
+
 const ButtonList = styled('div')`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
   grid-gap: ${space(1)};
 `;
+
+const StyledImage = styled('img')`
+  display: none;
+
+  @media (max-width: ${p => p.theme.breakpoints[0]}) {
+    display: block;
+  }
+`;
+
 export default Onboarding;

@@ -13,7 +13,7 @@ function OnboardingPanel({className, image, children}: Props) {
   return (
     <Panel className={className}>
       <Container>
-        <IllustrationContainer>{image}</IllustrationContainer>
+        <IlloBox>{image}</IlloBox>
         <StyledBox>{children}</StyledBox>
       </Container>
     </Panel>
@@ -23,18 +23,34 @@ function OnboardingPanel({className, image, children}: Props) {
 const Container = styled('div')`
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  min-height: 450px;
+  flex-direction: row;
+  min-height: 425px;
   padding: ${space(1)} ${space(4)};
+
+  @media (max-width: ${p => p.theme.breakpoints[0]}) {
+    min-height: 250px;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 `;
 
 const StyledBox = styled('div')`
   flex: 1.5;
   padding: ${space(3)};
+  width: auto;
+
+  @media (max-width: ${p => p.theme.breakpoints[0]}) {
+    padding: ${space(2)} 0 ${space(1)} 0;
+    width: 100%;
+  }
+
+  @media (max-width: ${p => p.theme.breakpoints[2]}) {
+    flex: 2;
+  }
 `;
 
-const IllustrationContainer = styled(StyledBox)`
+const IlloBox = styled(StyledBox)`
   display: flex;
   align-items: center;
   justify-content: center;
